@@ -1,76 +1,51 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class SecureCalculator {
+public class Calculator {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        try {
-            System.out.println("Simple Secure Calculator");
-            System.out.println("-----------------------");
-            
-            System.out.print("Enter first number: ");
-            double num1 = getValidNumber(scanner);
-            
-            System.out.print("Enter operator (+, -, *, /): ");
-            String operator = getValidOperator(scanner);
-            
-            System.out.print("Enter second number: ");
-            double num2 = getValidNumber(scanner);
-            
-            // Check for division by zero
-            if (operator.equals("/") && num2 == 0) {
-                System.err.println("Error: Cannot divide by zero");
-                return;
-            }
-            
-            double result = calculate(num1, num2, operator);
-            System.out.println("Result: " + result);
-            
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        } finally {
-            scanner.close();
-        }
-    }
+        Scanner sc = new Scanner();
 
-    private static double getValidNumber(Scanner scanner) {
-        while (true) {
-            try {
-                if (scanner.hasNextDouble()) {
-                    return scanner.nextDouble();
-                } else {
-                    scanner.next(); // clear the invalid input
-                    throw new InputMismatchException("Invalid number format");
-                }
-            } catch (InputMismatchException e) {
-                System.err.print("Invalid input. Please enter a valid number: ");
-            }
-        }
-    }
+        double num1, num2;
+        char operator;
 
-    private static String getValidOperator(Scanner scanner) {
-        while (true) {
-            String input = scanner.next().trim();
-            if (input.matches("[+\\-*/]")) {
-                return input;
-            }
-            System.err.print("Invalid operator. Please enter +, -, *, or /: ");
-        }
-    }
+        System.out.print("Enter first number: ");
+        num1 = sc.nextDouble();
 
-    private static double calculate(double num1, double num2, String operator) {
+        System.out.print("Enter operator (+, -, *, /): ");
+        operator = sc.next().charAt(0);
+
+        System.out.print("Enter second number: ");
+        num2 = sc.nextDouble()
+
+        double result = 0;
+
         switch (operator) {
-            case "+":
-                return num1 + num2;
-            case "-":
-                return num1 - num2;
-            case "*":
-                return num1 * num2;
-            case "/":
-                return num1 / num2;
+            case '+':
+                result = num1 + num2;
+                break;
+
+            case '-':
+                result = num1 - num2
+                break;
+
+            case '*':
+                result = num1 * num2;
+                break
+
+            case '/':
+                if (num2 != 0)
+                    result = num1 / num2;
+                else {
+                    System.out.println("Cannot divide by zero")
+                    return;
+                }
+                break;
+
             default:
-                throw new IllegalArgumentException("Invalid operator");
+                System.out.println("Invalid operator");
+                return;
         }
+
+        System.out.println("Result: " + result);
     }
 }
