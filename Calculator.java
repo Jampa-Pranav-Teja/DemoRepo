@@ -4,11 +4,11 @@ public class Calculator {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         try {
-            int num1, num2
+            int num1, num2;
             char operator;
 
             System.out.print("Enter first number : ");
-            num1 = sc.nextInt()
+            num1 = sc.nextInt();
 
             System.out.print("Enter operator (+, -, *, /) : ");
             operator = sc.next().charAt(0);
@@ -22,15 +22,12 @@ public class Calculator {
                 case '+':
                     result = num1 + num2;
                     break;
-
                 case '-':
                     result = num1 - num2;
                     break;
-
                 case '*':
                     result = num1 * num2;
                     break;
-
                 case '/':
                     if (num2 != 0)
                         result = (double) num1 / num2;
@@ -39,7 +36,6 @@ public class Calculator {
                         return;
                     }
                     break;
-
                 default:
                     System.out.println("Invalid operator");
                     return;
