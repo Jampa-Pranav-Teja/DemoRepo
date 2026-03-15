@@ -16,13 +16,13 @@ public class Calculator {
             System.out.print("Enter second number : ");
             num2 = sc.nextInt();
 
-            double result = 0;
+            double result = 0
 
             switch (operator) {
                 case '+':
                     result = num1 + num2;
                     break;
-                case '-':
+                case '-'
                     result = num1 - num2;
                     break;
                 case '*':
