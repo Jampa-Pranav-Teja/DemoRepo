@@ -28,7 +28,7 @@ public class Calculator {
             try {
                 double result = calculate(num1, num2, operator);
                 System.out.println("Result: " + result);
-            } catch (ArithmeticException | IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 System.err.println(e.getMessage());
             }
         }
@@ -43,7 +43,6 @@ public class Calculator {
             case '*':
                 return num1 * num2;
             case '/':
-                if (num2 == 0) throw new ArithmeticException("Cannot divide by zero");
                 return num1 / num2;
             default:
                 throw new IllegalArgumentException("Invalid operator");
